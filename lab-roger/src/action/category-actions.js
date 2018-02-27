@@ -6,8 +6,8 @@ export const categoryCreate = category => {
   return {
     type: 'CATEGORY_CREATE',
     payload: category,
-  }
-}
+  };
+};
 
 export const categoryUpdate = category => ({
   type: 'CATEGORY_UPDATE',
@@ -17,6 +17,6 @@ export const categoryUpdate = category => ({
 export const categoryDelete = category => ({
   type: 'CATEGORY_DELETE',
   payload: category,
-})
+});
 
 export const categoryReset = () => ({type: 'CATEGORY_RESET'});

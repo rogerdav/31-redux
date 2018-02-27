@@ -1,16 +1,16 @@
-import React from 'react'
+import React from 'react';
 import CategoryForm from '../category-form/index';
 import {connect} from 'react-redux';
 import {categoryUpdate, categoryDelete} from '../../action/category-actions';
 
 class CategoryItem extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = { 
 
-    category: this.props.category ? this.props.category : {},
-    editing: false,
-    }
+      category: this.props.category ? this.props.category : {},
+      editing: false,
+    };
     
     this.handleEditing = this.handleEditing.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
@@ -28,21 +28,21 @@ class CategoryItem extends React.Component {
     return (
       <li className='category-item'
       
-      onDoubleClick={this.handleEditing}>
-      <p>{this.props.category.title}</p>
-      <p>   {this.props.category.budget}</p>
-      <button onClick={this.handleDelete}>Delete</button>
-      {this.state.editing ?
-      <CategoryForm 
-      buttonText='update'
-      onComplete={this.props.handleUpdate}
-      category={this.state.category}
-      toggleEdit={this.handleEditing}
-       />
-      : undefined
-    }
-    </li>
-    )
+        onDoubleClick={this.handleEditing}>
+        <p>{this.props.category.title}</p>
+        <p>   {this.props.category.budget}</p>
+        <button onClick={this.handleDelete}>Delete</button>
+        {this.state.editing ?
+          <CategoryForm 
+            buttonText='update'
+            onComplete={this.props.handleUpdate}
+            category={this.state.category}
+            toggleEdit={this.handleEditing}
+          />
+          : undefined
+        }
+      </li>
+    );
   }
 }
 

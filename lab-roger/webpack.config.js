@@ -13,7 +13,7 @@ let plugins = [
   new ExtractTextPlugin('bundle-[hash].css'),
   new EnvironmentPlugin(['NODE_ENV']),
   new DefinePlugin({
-    __DEBUG__: JSON.stringify(!production)
+    __DEBUG__: JSON.stringify(!production),
   }),
 
 ];
@@ -22,8 +22,8 @@ if (production) {
   plugins = plugins.concat([
     new CleanPlugin(),
     new UglifyPlugin(),
-  ])
-};
+  ]);
+}
 
 module.exports = {
   plugins,
@@ -33,7 +33,7 @@ module.exports = {
   output: {
     path: `${__dirname}/build`,
     filename: 'bundle-[hash].js',
-    publicPath: '/'
+    publicPath: '/',
   },
   devServer: {
     historyApiFallback: true,
@@ -56,11 +56,11 @@ module.exports = {
             loader: 'url-loader',
             options: {
               limit: 10000,
-              name: 'font/[name].[ext]'
-            }
-          }]
-        }
-        ,
+              name: 'font/[name].[ext]',
+            },
+          }],
+      }
+      ,
       {
         test: /\.(jpg|jpeg|gif|png|tiff)$/,
         use:[
@@ -68,10 +68,10 @@ module.exports = {
             loader: 'url-loader',
             options: {
               limit: 60000,
-              name: 'image/[name].[ext]'
-            }
-          }
-        ]
+              name: 'image/[name].[ext]',
+            },
+          },
+        ],
       },
 
       {
@@ -80,13 +80,13 @@ module.exports = {
           {
             loader: 'file-loader',
             options: {
-              name: 'audio/[name].[ext]'
-            }
-          }
-        ]
-      }
-    ]
-  }
+              name: 'audio/[name].[ext]',
+            },
+          },
+        ],
+      },
+    ],
+  },
 
-}
+};
 
