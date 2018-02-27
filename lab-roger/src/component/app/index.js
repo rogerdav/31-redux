@@ -1,12 +1,12 @@
-import React from 'react';
+import React from 'react'
 import {Provider} from 'react-redux';
 import createStore from '../../lib/store';
-import Dashboard from '../../component/dashboard/index';
+import Dashboard from '../../component/dashboard';
 import {BrowserRouter, Route} from 'react-router-dom'
 
 const store = createStore();
 
-class App extends React.component {
+class App extends React.Component {
   componentDidMount() {
     store.subscribe(() => console.log('__State__:', store.getState()));
   }

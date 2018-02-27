@@ -5,13 +5,13 @@ let production = process.env.NODE_ENV === 'production';
 const HtmlPlugin = require('html-webpack-plugin');
 const UglifyPlugin = require('uglifyjs-webpack-plugin');
 const CleanPlugin = require('clean-webpack-plugin');
-const {DefinePlugin, EnviromentPlugin} = require('webpack');
+const {DefinePlugin, EnvironmentPlugin} = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 let plugins = [
   new HtmlPlugin({ template: `${__dirname}/src/index.html`}),
   new ExtractTextPlugin('bundle-[hash].css'),
-  new EnviromentPlugin(['NODE_env']),
+  new EnvironmentPlugin(['NODE_ENV']),
   new DefinePlugin({
     __DEBUG__: JSON.stringify(!production)
   }),
@@ -58,7 +58,8 @@ module.exports = {
               limit: 10000,
               name: 'font/[name].[ext]'
             }
-          }
+          }]
+        }
         ,
       {
         test: /\.(jpg|jpeg|gif|png|tiff)$/,
@@ -85,8 +86,7 @@ module.exports = {
         ]
       }
     ]
-  }]
+  }
 
 }
 
-};

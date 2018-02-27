@@ -1,7 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {categoryCreate} from '../../action/category-actions';
+import {categoryCreate, categoryDelete, categoryUpdate} from '../../action/category-actions';
 import CategoryForm from '../category-form/index';
+import CategoryItem from '../category-list/index';
 
 class Dashboard extends React.Component {
   render() {
@@ -15,9 +16,11 @@ class Dashboard extends React.Component {
         
         {this.props.categories ?
           this.props.categories.map(cat =>
-          <div key={cat._id}>
-          <h3>{cat.title}</h3>
-          </div>)
+          <CategoryItem key={cat._id} 
+          category={cat} 
+          handleDelete={this.props.dashboardCategoryDelete}
+          handleUpdate={this.props.dashboardCategoryUpdate}
+          />)
           :
           undefined
           }
@@ -31,6 +34,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = (dispatch, getState) => ({
   dashboardCategoryCreate: category => dispatch(categoryCreate(category)),
+  dashboardCategoryDelete: category => dispatch(categoryDelete(category)),
+  dashboardCategoryUpdate: category => dispatch(categoryUpdate(category)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps) (Dashboard);
