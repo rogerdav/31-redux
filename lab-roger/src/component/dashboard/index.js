@@ -8,7 +8,7 @@ class Dashboard extends React.Component {
   render() {
     return(
       <section>
-        <h1>Expenses Cataegories</h1>
+        <h1>Expenses Categories</h1>
 
         <CategoryForm
           buttonText='create'
@@ -16,20 +16,20 @@ class Dashboard extends React.Component {
         
         {this.props.categories ?
           this.props.categories.map(cat =>
-          <CategoryItem key={cat._id} 
-          category={cat} 
-          handleDelete={this.props.dashboardCategoryDelete}
-          handleUpdate={this.props.dashboardCategoryUpdate}
-          />)
+            <CategoryItem key={cat._id} 
+              category={cat} 
+              handleDelete={this.props.dashboardCategoryDelete}
+              handleUpdate={this.props.dashboardCategoryUpdate}
+            />)
           :
           undefined
-          }
+        }
       </section>    
-    )
+    );
   }
 }
 const mapStateToProps = state => ({
-  categories: state
+  categories: state,
 });
 
 const mapDispatchToProps = (dispatch, getState) => ({

@@ -2,15 +2,15 @@ import React from 'react';
 
 class CategoryForm extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = this.props.category 
-    ? this.props.category
-    : {
-      title: '',
-      budget: '',
+      ? this.props.category
+      : {
+        title: '',
+        budget: '',
 
-    }
+      };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
@@ -20,7 +20,7 @@ class CategoryForm extends React.Component {
   }
 
   handleSubmit(e) {
-    console.log(this.props)
+    console.log(this.props);
     e.preventDefault();
     
     this.props.onComplete(this.state);
