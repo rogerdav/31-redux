@@ -10,7 +10,7 @@ export const categoryCreate = category => {
 }
 
 export const categoryUpdate = category => ({
-  type: 'CATEGORY_IPDATE',
+  type: 'CATEGORY_UPDATE',
   payload: category,
 });
 

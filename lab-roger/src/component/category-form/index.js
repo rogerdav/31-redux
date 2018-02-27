@@ -3,6 +3,7 @@ import React from 'react';
 class CategoryForm extends React.Component {
   constructor(props) {
     super(props)
+
     this.state = this.props.category 
     ? this.props.category
     : {
@@ -19,8 +20,12 @@ class CategoryForm extends React.Component {
   }
 
   handleSubmit(e) {
+    console.log(this.props)
     e.preventDefault();
+    
     this.props.onComplete(this.state);
+    if(this.props.buttonText === 'update') this.props.toggleEdit();
+    
   }
 
   render() {
@@ -34,7 +39,7 @@ class CategoryForm extends React.Component {
         <input 
           type='number'
           name='budget'
-          valjue={this.state.budget}
+          value={this.state.budget}
           onChange={this.handleChange} />
       
         <button type='submit'>{this.props.buttonText}</button>
